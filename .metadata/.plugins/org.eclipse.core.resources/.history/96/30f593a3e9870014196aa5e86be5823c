@@ -1,0 +1,12 @@
+package com.motioncoding.miband.model;
+
+import java.util.Calendar;
+
+public class MiBand {
+
+	public String mBTAddress;
+	public int mSteps;
+	public Battery mBattery;
+	
+	
+}

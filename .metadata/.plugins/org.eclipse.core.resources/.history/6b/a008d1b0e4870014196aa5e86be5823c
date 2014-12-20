@@ -1,0 +1,5 @@
+package com.motioncoding.miband.model;
+
+public class Battery {
+
+}

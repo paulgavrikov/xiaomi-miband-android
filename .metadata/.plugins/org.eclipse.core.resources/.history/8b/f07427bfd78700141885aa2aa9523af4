@@ -1,0 +1,40 @@
+package com.motioncoding.miband;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter.LeScanCallback;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
+import android.os.Bundle;
+
+public class MiActivity extends Activity implements LeScanCallback {
+
+	private BluetoothManager bluetoothManager;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_mi);
+		bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		bluetoothManager.getAdapter().startLeScan(this);
+	}
+
+	@Override
+	public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+		if(device != null && device.getName() != null & device.getName().equals("MI")) {
+			System.out.println(device.getAddress());
+			bluetoothManager.getAdapter().stopLeScan(this);
+		}
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		bluetoothManager.getAdapter().stopLeScan(this);
+	}
+}

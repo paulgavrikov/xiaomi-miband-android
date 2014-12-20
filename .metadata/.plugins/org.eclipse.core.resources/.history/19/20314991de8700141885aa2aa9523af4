@@ -1,0 +1,17 @@
+package com.motioncoding.miband;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MiOverviewActivity extends Activity {
+	
+	private String mDeviceAddress;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getActionBar().hide();
+		mDeviceAddress = getIntent().getStringExtra("address");
+		setContentView(R.layout.activity_mi_overview);
+	}
+}

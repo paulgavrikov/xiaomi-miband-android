@@ -1,0 +1,94 @@
+package com.motioncoding.miband;
+
+import java.util.UUID;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothProfile;
+import android.content.Context;
+import android.os.Bundle;
+
+public class MiOverviewActivity extends Activity {
+
+	private String mDeviceAddress;
+	private BluetoothManager mBluetoothManager;
+	private BluetoothAdapter mBluetoothAdapter;
+	private BluetoothDevice mMiBand;
+	private BluetoothGatt mGatt;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getActionBar().hide();
+		mDeviceAddress = getIntent().getStringExtra("address");
+		setContentView(R.layout.activity_mi_overview);
+		mBluetoothManager = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE));
+		mBluetoothAdapter = mBluetoothManager.getAdapter();
+		mMiBand = mBluetoothAdapter.getRemoteDevice(mDeviceAddress);
+
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		mGatt = mMiBand.connectGatt(this, false, mGattCallback);
+		mGatt.connect();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		mGatt.disconnect();
+		mGatt.close();
+		mGatt = null;
+	}
+	
+	private void auth() {
+		BluetoothGattService service = mGatt.getService(UUID.fromString("00001800-0000-1000-8000-00805f9b34fb"));
+		BluetoothGattCharacteristic chrt = service.getCharacteristic(UUID.fromString("0000ff0f-0000-1000-8000-00805f9b34fb"));
+		mGatt.writeCharacteristic(chrt);
+//		mGatt.writeCharacteristic();
+	}
+
+	private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
+
+		@Override
+		public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+			if (status == BluetoothGatt.GATT_SUCCESS) {
+				for (BluetoothGattService srvs : gatt.getServices()) {
+					System.out.println("Service: "+srvs.getUuid());
+					for (BluetoothGattCharacteristic chrt : srvs
+							.getCharacteristics()) {
+						System.out.println("Characteristic: "+chrt.getUuid()+" with "+chrt.getProperties());
+					}
+				}
+			}
+			
+			auth();
+			
+		}
+
+		@Override
+		public void onConnectionStateChange(BluetoothGatt gatt, int status,
+				int newState) {
+			if (newState == BluetoothProfile.STATE_CONNECTED) {
+				gatt.discoverServices();
+			}
+		}
+
+		public void onCharacteristicWrite(BluetoothGatt gatt,
+				BluetoothGattCharacteristic characteristic, int status) {
+		}
+
+		public void onCharacteristicRead(BluetoothGatt gatt,
+				BluetoothGattCharacteristic characteristic, int status) {
+		}
+	};
+
+}

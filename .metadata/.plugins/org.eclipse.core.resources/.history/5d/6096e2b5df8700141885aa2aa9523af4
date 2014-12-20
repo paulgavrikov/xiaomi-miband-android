@@ -1,0 +1,44 @@
+package com.motioncoding.miband;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
+import android.os.Bundle;
+
+public class MiOverviewActivity extends Activity {
+	
+	private String mDeviceAddress;
+	private BluetoothManager mBluetoothManager;
+	private BluetoothAdapter mBluetoothAdapter;
+	private BluetoothDevice mMiBand;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getActionBar().hide();
+		mDeviceAddress = getIntent().getStringExtra("address");
+		setContentView(R.layout.activity_mi_overview);
+		mBluetoothManager = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE));
+		mBluetoothAdapter = mBluetoothManager.getAdapter();
+	
+	}
+	
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
+	
+	
+	
+	
+}

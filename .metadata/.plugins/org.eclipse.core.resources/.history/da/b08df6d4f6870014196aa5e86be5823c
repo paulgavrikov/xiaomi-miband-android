@@ -1,0 +1,18 @@
+package com.motioncoding.miband;
+
+import android.app.ListActivity;
+import android.os.Bundle;
+
+import com.motioncoding.miband.model.LeParams;
+
+public class MiLeParamsActivity extends ListActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getActionBar().hide();
+		setContentView(R.layout.activity_mi_le_params);
+		
+		LeParams params = (LeParams) getIntent().getParcelableExtra("params");
+	}
+}

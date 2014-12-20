@@ -1,0 +1,23 @@
+package com.motioncoding.miband.model;
+
+import java.util.Observable;
+
+
+public class MiBand extends Observable{
+
+	public String mBTAddress;
+	public int mSteps;
+	public Battery mBattery;
+	
+	
+	public void setSteps(int steps) {
+		mSteps = steps;
+		notifyObservers();
+	}
+	
+	public void setBattery(Battery battery) {
+		mBattery = battery;
+		notifyObservers();
+	}
+	
+}

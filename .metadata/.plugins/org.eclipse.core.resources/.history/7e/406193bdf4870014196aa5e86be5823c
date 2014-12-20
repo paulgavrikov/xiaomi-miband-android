@@ -1,0 +1,13 @@
+package com.motioncoding.miband.model;
+
+public class LeParams {
+	public int connIntMin, connIntMax, latency, timeout, connInt, advInt;
+
+	public static LeParams fromByte(byte[] b) {
+		LeParams params = new LeParams();
+		
+		
+		
+		return params;
+	}
+}

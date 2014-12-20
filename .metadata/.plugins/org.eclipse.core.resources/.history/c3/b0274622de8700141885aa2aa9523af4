@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MiBand</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="not_found">MiBand not found. Is it in range?</string>
+    <string name="title_activity_mi_overview">MiOverviewActivity</string>
+
+</resources>

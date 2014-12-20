@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.bluetooth.le.ScanCallback"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="com.motioncoding.miband.MiActivity"/>
+<fullyQualifiedTypeName name="android.os.Build"/>
+<fullyQualifiedTypeName name="android.os.Build.VERSION"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="com.motioncoding.miband.MiOverviewActivity"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothManager"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothDevice"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothGattCallback"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothGatt"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothProfile"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothGattService"/>
+<fullyQualifiedTypeName name="java.util.UUID"/>
+<fullyQualifiedTypeName name="android.bluetooth.BluetoothGattCharacteristic"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+</qualifiedTypeNameHistroy>

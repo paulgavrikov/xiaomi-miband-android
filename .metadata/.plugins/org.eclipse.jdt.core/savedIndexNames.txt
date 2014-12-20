@@ -1,0 +1,4 @@
+INDEX VERSION 1.127+/Users/paul/Documents/MiBandAndroid/.metadata/.plugins/org.eclipse.jdt.core
+77043017.index
+811295056.index
+1255426124.index

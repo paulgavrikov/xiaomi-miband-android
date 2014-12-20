@@ -1,0 +1,38 @@
+package com.motioncoding.miband.model;
+
+import java.util.Calendar;
+
+public class Battery {
+	public int mBatteryLevel;
+	public int mCycles;
+	public Calendar mLastCharged;
+	public Status mStatus;
+
+	public static Battery fromByte(byte[] b) {
+		Battery battery = new Battery();
+		battery.mBatteryLevel = b[0];
+		battery.mStatus = Status.fromByte(b[9]);
+		
+		return battery;
+	}
+
+	static enum Status {
+		LOW, FULL, CHARGING, NOT_CHARGING;
+
+		public static Status fromByte(byte b) {
+			switch (b) {
+			case 1:
+				return LOW;
+			case 2:
+				return CHARGING;
+			case 3:
+				return FULL;
+			case 4:
+				return NOT_CHARGING;
+
+			default:
+				return null;
+			}
+		}
+	}
+}
